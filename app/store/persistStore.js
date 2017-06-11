@@ -27,21 +27,24 @@ const messageFilter = createFilter(
 )
 
 export default function persist(store) {
-  return persistStore(store, {
-    storage: AsyncStorage,
-    // transforms: [
-    //   immutableTransform({
-    //     records: [
-    //       UserInfoRecord,
-    //       UserStateRecord
-    //     ],
-    //   }),
-    // ],
-    transforms: [messageFilter],
-    whitelist: ['AUTH', 'CONFIG', 'MESSAGE', 'ARTICLE', 'TOPIC', 'SHOP', 'NOTICE', 'PAYMENT', 'DRAFTS', 'PROMOTER'],
-  }, () => {
+  return persistStore(
+    store,
+    {
+      storage: AsyncStorage,
+      // transforms: [
+      //   immutableTransform({
+      //     records: [
+      //       UserInfoRecord,
+      //       UserStateRecord
+      //     ],
+      //   }),
+      // ],
+      transforms: [messageFilter],
+      whitelist: ['AUTH', 'CONFIG', 'MESSAGE', 'ARTICLE', 'TOPIC', 'SHOP', 'NOTICE', 'PAYMENT', 'DRAFTS', 'PROMOTER'],
+    },
+    () => {
     store.dispatch(restoreFromPersistence())
-  })
+    })
 }
 
 export function restoreFromPersistence() {

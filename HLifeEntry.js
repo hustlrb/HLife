@@ -125,7 +125,10 @@ AV.init(
       StatusBar.setTranslucent(true)
       StatusBar.setBackgroundColor('transparent', true)
     }
+
     StatusBar.setBarStyle('light-content', true)
+
+    // store was created by store/configureStore, which is associated with a reducer
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>

@@ -350,6 +350,7 @@ class Search extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  // state was constructed by reducer
   let users = getUserSearchResult(state) || []
   let shops = getShopSearchResult(state) || []
   let topics = getTopicSearchResult(state) || []
@@ -360,10 +361,12 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({
-  searchKeyAction,
-  searchClearAction
-}, dispatch)
+const mapDispatchToProps = (dispatch) => bindActionCreators(
+  {
+    searchKeyAction,
+    searchClearAction
+  },
+  dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)
 
